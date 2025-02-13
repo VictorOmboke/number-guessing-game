@@ -8,19 +8,22 @@ def create_random_num():
     random_int = random.randint(1, 100)
     return random_int
 
-def get_user_guess():
-    """
-    Get users input to guess the correct number.
-    """
-    try: 
-        user_guess = int(input("Pick a number between 1 and 100. "))
-        if user_guess < 0 or user_guess > 100:
-            raise ValueError(f"'{user_guess}' is out of range! Enter a number between 1 and 100.")
-    except ValueError as e: 
-        print(f"'{user_guess}' is not a number. Enter a number between 1 and 100.")
-        print(e)
-    else:
-        print(user_guess)
-        
+print(f"Random Number: {create_random_num()}")
 
-get_user_guess()
+def get_upper_bound():
+    """
+    Prompt user to enter the upper limit of guessing game.
+    """
+    prompt = True
+    while prompt:
+        num = input("Please enter a number greater than 1. ")
+        # Check if all characters in num are digits and if the num is greater than 1.
+        if num.isdigit() == True and int(num) > 1:
+            print(f"Your guess: {num}")
+            prompt = False
+        else:
+            # Handle out of range and non-integer inputs
+            print("Invalid input! Please try again.")
+
+get_upper_bound()
+            
